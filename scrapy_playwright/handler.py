@@ -33,7 +33,7 @@ from w3lib.encoding import html_body_declared_encoding, http_content_type_encodi
 
 from scrapy_playwright.headers import use_scrapy_headers, use_playwright_headers
 from scrapy_playwright.page import PageMethod
-
+from playwright_stealth import stealth_sync
 
 __all__ = ["ScrapyPlaywrightDownloadHandler"]
 
@@ -188,6 +188,7 @@ class ScrapyPlaywrightDownloadHandler(HTTPDownloadHandler):
 
         await context.semaphore.acquire()
         page = await context.context.new_page()
+        stealth_sync(page)
         self.stats.inc_value("playwright/page_count")
         logger.debug(
             "[Context=%s] New page created, page count is %i (%i for all contexts)",
