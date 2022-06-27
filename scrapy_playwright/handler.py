@@ -33,7 +33,7 @@ from w3lib.encoding import html_body_declared_encoding, http_content_type_encodi
 
 from scrapy_playwright.headers import use_scrapy_headers, use_playwright_headers
 from scrapy_playwright.page import PageMethod
-from playwright_stealth import stealth_sync
+from playwright_stealth import stealth_async
 
 __all__ = ["ScrapyPlaywrightDownloadHandler"]
 
