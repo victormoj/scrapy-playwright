@@ -188,7 +188,7 @@ class ScrapyPlaywrightDownloadHandler(HTTPDownloadHandler):
 
         await context.semaphore.acquire()
         page = await context.context.new_page()
-        stealth_sync(page)
+        await stealth_async(page)
         self.stats.inc_value("playwright/page_count")
         logger.debug(
             "[Context=%s] New page created, page count is %i (%i for all contexts)",
